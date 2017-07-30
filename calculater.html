@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Simple calculator</title>
+</head>
+<body>
+
+<p>
+    不支持小数、次幂，支持 +-*/!% 和记忆功能
+</p>
+<input type="text" value="请输入表达式" id="i1">
+<p id="p1">等待输入</p>
+<script src="calculater.js">
+</script>
+<script>
+    var tokenizer=new Tokenizer();
+    function getInput() {
+        document.getElementById("p1").innerHTML = "nice";
+
+    var text = document.getElementById("i1").value;
+    tokenizer.clear();
+    tokenizer.setInput(text);
+    try{
+        var e=calculate(tokenizer);
+        document.getElementById("p1").innerHTML=e.toString();
+    }
+    catch(err){
+        document.getElementById("p1").innerHTML="something wrong. Try again!";
+    }
+    }
+</script>
+
+<button type="button" onclick="getInput()">submit</button>
+
+</body>
+</html>
